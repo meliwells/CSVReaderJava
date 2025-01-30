@@ -4,6 +4,8 @@ package data;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +26,10 @@ public class CSVReader {
             reader.readLine(); //to ignore header
             String line;
             while ((line = reader.readLine()) != null) {
-                //create method to convert string to record
+                Record record = deserialize(line);
+                if (record != null) {
+                    result.add(record);
+                }
                 //after record created, add to result
                 String[] values = line.split(delimiter);
                 System.out.println(Arrays.toString(values));
@@ -34,4 +39,29 @@ public class CSVReader {
         }
         return result;
     }
-}
+
+    private static Record deserialize(String line) {
+        String[] fields = line.split(delimiter, -1);
+        if (fields.length == 5) {
+            Record record = new Record();
+            record.setDate(LocalDate.parse(fields[0]);
+            record.setCategory(restore(fields[1]));
+            record.setDescription(restore(fields[2]));
+            record.setAmount(BigDecimal.valueOf()[3]);
+            record.setPaymentMethod(restore(fields[4]));
+            return record;
+        }
+        return null;
+    }
+
+    private String restore(String value) {
+        return value.replace(delimiter);
+    }
+ } 
+
+
+ // this.date = date;
+//        this.category = category;
+//        Description = description;
+//        this.amount = amount;
+//        this.paymentMethod = paymentMethod;

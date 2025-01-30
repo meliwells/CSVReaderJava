@@ -1,29 +1,36 @@
 package data;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.StringJoiner;
+
 public class Record {
-    public int date; //LocalDate
+    LocalDate date; //LocalDate
     public String category;
     public String Description;
-    public int amount;  //BigDecimal instead of int
+    BigDecimal amount;  //BigDecimal instead of int
     public String paymentMethod;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    String text = date.format(formatter);
 
     public Record() {
     }
 
-    //delete constructor and regenerate
-    public Record(int date, String category, String description, int amount, String paymentMethod) {
+    public Record(LocalDate date, String category, String description, BigDecimal amount, String paymentMethod) {
         this.date = date;
         this.category = category;
         Description = description;
         this.amount = amount;
         this.paymentMethod = paymentMethod;
     }
-//delete getters and setters and regenerate
-    public int getDate() {
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -43,11 +50,11 @@ public class Record {
         Description = description;
     }
 
-    public int getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -60,4 +67,13 @@ public class Record {
     }
 
     //create a ToString (look at code along for dates to format) use date formatter to print date as MM-dd-yyyy
+    @Override
+    public String toString() {
+        return "date=" + date.format(formatter) + "category='" + category +
+                "Description='" + Description + "amount=" + amount + "paymentMethod='" + paymentMethod + "'")
+    }
+
+
 }
+
+
