@@ -1,5 +1,6 @@
 package domain;
 
+import data.CSVReader;
 import data.DataAccessException;
 import data.Record;
 
@@ -21,7 +22,8 @@ public class Controller {
 
     //getAllRecords()
     public List<data.Record> getAllRecords() throws DataAccessException {
-        ArrayList<Record> result = new ArrayList<>();
+        ArrayList<Record> result = CSVReader.readCSVFile();
+        return result;
 
     }
 }
