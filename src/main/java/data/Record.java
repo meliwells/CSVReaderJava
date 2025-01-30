@@ -68,8 +68,8 @@ public class Record {
     //create a ToString (look at code along for dates to format) use date formatter to print date as MM-dd-yyyy
     @Override
     public String toString() {
-        return "Date: " + date.format(formatter) + "  " + "Category: " + category + " " +
-                "Description: " + Description + "  " + "Amount: " + amount + "  " +
+        return "Date: " + date.format(formatter) + " - " + "Category: " + category + " - " +
+                "Description: " + Description + " - " + "Amount: " + amount + " - " +
                 "Payment Method: " + paymentMethod;
     }
 

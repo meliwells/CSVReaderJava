@@ -29,7 +29,10 @@ public class Controller {
 
     }
 
-    public void addNewRecord(Record record) {
+
+    public void addNewRecord(Record record)throws DataAccessException {
+        ArrayList<Record> newRecord = CSVReader.writeToCSVFile();
+
         //in csv object to string, pass to csv
     }
 }

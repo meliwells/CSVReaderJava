@@ -1,9 +1,7 @@
 package data;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
@@ -36,6 +34,25 @@ public class CSVReader {
         return result;
     }
 
+    public static void writeToCSVFile(String csvFile, List<Record> record) throws DataAccessException {
+        try (PrintWriter writer = new PrintWriter(csvFile)) {
+            for (Record newRecord : record) {
+                writer.println(serialize(newRecord));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static String serialize( Record record) {
+        return String.format("%s,%s,%s,%s,%s",
+                record.getDate(),
+                record.getCategory(),
+                record.getDescription(),
+                record.getAmount(),
+                record.getPaymentMethod());
+    }
+
     private static Record deserialize(String line) {
         String[] fields = line.split(delimiter, -1);
         if (fields.length == 5) {
@@ -51,10 +68,3 @@ public class CSVReader {
     }
 
  }
-
-
- // this.date = date;
-//        this.category = category;
-//        Description = description;
-//        this.amount = amount;
-//        this.paymentMethod = paymentMethod;

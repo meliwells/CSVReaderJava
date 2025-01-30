@@ -9,7 +9,7 @@ public class Main {
 //calling view and print
         View view = new View();
         view.printAllRecords();
-
         view.printByCategory("Meals: ");
+
     }
 }
