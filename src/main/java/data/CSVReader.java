@@ -54,10 +54,11 @@ public class CSVReader {
         return null;
     }
 
+
     private String restore(String value) {
         return value.replace(delimiter);
     }
- } 
+ }
 
 
  // this.date = date;
