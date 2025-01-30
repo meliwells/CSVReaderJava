@@ -13,7 +13,6 @@ public class Record {
     public String paymentMethod;
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    String text = date.format(formatter);
 
     public Record() {
     }
@@ -69,8 +68,9 @@ public class Record {
     //create a ToString (look at code along for dates to format) use date formatter to print date as MM-dd-yyyy
     @Override
     public String toString() {
-        return "date=" + date.format(formatter) + "category='" + category +
-                "Description='" + Description + "amount=" + amount + "paymentMethod='" + paymentMethod + "'")
+        return "Date: " + date.format(formatter) + "  " + "Category: " + category + " " +
+                "Description: " + Description + "  " + "Amount: " + amount + "  " +
+                "Payment Method: " + paymentMethod;
     }
 
 
